@@ -29,6 +29,8 @@ return {
         "ts_ls",
         "html",
         "lua_ls",
+        "pyright",
+        "rust_analyzer",
       },
     })
 
@@ -37,7 +39,11 @@ return {
         "prettier",
         "stylua",
         "eslint_d",
+        "black",
+        "isort",
+        "flake8",
       },
+      run_on_start = true,
     })
   end,
 }

@@ -1,6 +1,12 @@
 return {
   "nvim-telescope/telescope.nvim",
-  dependencies = { "nvim-lua/plenary.nvim" },
+  dependencies = {
+    "nvim-telescope/telescope-fzf-native.nvim",
+    build = "make",
+    config = function()
+      require("telescope").load_extension("fzf")
+    end,
+  },
   opts = function(_, opts)
     local actions = require("telescope.actions")
 
@@ -17,7 +23,7 @@ return {
       },
       file_ignore_patterns = {
         "node_modules", -- Ignore node_modules directory
-        "%.git", -- Ignore .git directory
+        ".git/", -- Ignore .git directory
         "%.cache", -- Ignore cache files
         "%.png", -- Ignore PNG image files
         "%.jpg", -- Ignore JPG image files
@@ -45,8 +51,5 @@ return {
         case_mode = "smart_case", -- Smart case
       },
     }
-
-    -- Load Telescope extensions
-    require("telescope").load_extension("fzf")
   end,
 }

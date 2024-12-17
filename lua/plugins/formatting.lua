@@ -8,6 +8,7 @@ return {
       json = { "prettier" },
       html = { "prettier" },
       lua = { "stylua" },
+      python = { "black", "isort" },
     })
 
     opts.default_format_opts = vim.tbl_extend("force", opts.default_format_opts or {}, {

@@ -25,18 +25,39 @@ return {
       end
     end
     -- Configure Mason-LSPconfig
-    mason_lspconfig.setup({
-      ensure_installed = {
-        "ts_ls",
-        "html",
-        "lua_ls",
-      },
-    })
+    -- mason_lspconfig.setup({
+    --   ensure_installed = {
+    --     "ts_ls",
+    --     "html",
+    --     "lua_ls",
+    --   },
+    -- })
 
     -- Setup individual servers
     mason_lspconfig.setup_handlers({
       function(server_name)
         lspconfig[server_name].setup({ on_attach = on_attach })
+      end,
+      ["pyright"] = function()
+        lspconfig.pyright.setup({
+          on_attach = on_attach,
+          settings = {
+            python = {},
+          },
+        })
+      end,
+
+      -- Rust: rust_analyzer
+      ["rust_analyzer"] = function()
+        lspconfig.rust_analyzer.setup({
+          on_attach = on_attach,
+          settings = {
+            ["rust-analyzer"] = {
+              cargo = { allFeatures = true },
+              checkOnSave = { command = "clippy" },
+            },
+          },
+        })
       end,
     })
   end,
