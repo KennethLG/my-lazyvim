@@ -3,4 +3,4 @@
 -- Add any additional options here
 
 vim.opt.wrap = true
-vim.g.mapleader = "\\"
+vim.g.mapleader = " "

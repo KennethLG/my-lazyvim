@@ -1,5 +1,6 @@
 return {
   "williamboman/mason.nvim",
+  lazy = false,
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -32,6 +33,7 @@ return {
         "pyright",
         "rust_analyzer",
       },
+      automatic_installation = true,
     })
 
     mason_tool_installer.setup({
